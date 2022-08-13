@@ -1,0 +1,127 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TEST2</title>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js">
+    </script>
+
+    
+    <style>
+        table {
+            margin: 0 auto;
+            font-size: large;
+            border: 1px solid black;
+        }
+
+        h1 {
+            text-align: center;
+            color: aqua;
+            font-size: xx-large;
+            font-family: 'Gill Sans',
+                'Gill Sans MT', ' Calibri',
+                'Trebuchet MS', 'sans-serif';
+        }
+
+        td {
+            background-color: #E4F5D4;
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            font-weight: bold;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        td {
+            font-weight: lighter;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>Equipement-wise Details</h1>
+
+        <!-- TABLE CONSTRUCTION-->
+        <table id='table'>
+            <!-- HEADING FORMATION -->
+            <tr>
+                <th>MACHINE NAME</th>
+                <th>MACHINE ID</th>
+                <th>ENERGY CONSUMED(KWH)</th>
+                <!-- <Th>
+                    <tr>today </tr>
+                    <tr>MTD</t>
+                    <tr>ytd</tr>
+                </Th> -->
+            
+                <th>ACTIVE POWER(MVA)</th>
+                <th>REACTIVE POWER</th>
+                <th>CURRENT(AMPS)</th>
+                <th>VOLATAGE(VOLTS)</th>
+                <th>POWER FACTOR</th>
+                <th>IDLE TIME</th>
+            </tr>
+
+            <script>
+                $(document).ready(function () {
+
+                    // FETCHING DATA FROM JSON FILE
+                    $.getJSON("def.json",
+                        function (data) {
+                            var tablet = '';
+
+                            // ITERATING THROUGH OBJECTS
+                            $.each(data, function (key, value) {
+
+                                //CONSTRUCTION OF ROWS HAVING
+                                // DATA FROM JSON OBJECT
+                                tablet += '<tr>';
+                                tablet += '<td>' +
+                                    value.machine_name + '</td>';
+
+                                tablet += '<td>' +
+                                    value.machine_id + '</td>';
+
+                                tablet += '<td>' +
+                                    value.current + '</td>';
+
+                                tablet += '<td>' +
+                                    value.voltage + '</td>';
+
+                                tablet += '<td>' +
+                                    value.power_factor + '</td>';
+                                
+                                tablet += '<td>' +
+                                    value.active_power + '</td>';
+
+                                tablet += '<td>' +
+                                    value.apparent_power+ '</td>';
+                                
+                                tablet += '<td>' +
+                                    value.reactive_power + '</td>';
+
+                                tablet += '<td>' +
+                                    value.idle_time + '</td>';
+
+
+
+
+
+                                tablet += '</tr>';
+                            });
+
+                            //INSERTING ROWS INTO TABLE
+                            $('#table').append(tablet);
+                        });
+                });
+            </script>
+    </section>
+</body>
+
+</html>

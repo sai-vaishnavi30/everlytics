@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+                <head>
+                    <title>test</title>
+                    <style type="text/css">
+                        body {
+                            font-family: Calibri;
+                            text-align: center;
+                            color: red;
+                        }
+
+                        input[type="text"] {
+                            width: 250px;
+                        }
+
+                        input[type="create"],
+                        input[type="cancel"] {
+                            width: 77px;
+                            height: 27px;
+                            color: brown;
+                        }
+
+                        form {
+                            text-align: center;
+                            font-family: Calibri;
+                            font-size: 20px;
+                            border: 3px solid black;
+                            width: 600px;
+                            margin: 20px auto;
+                            color: blueviolet;
+                        }
+
+                        button{
+                            text-align: center;
+                            margin: 0 auto; 
+                            color: blue;
+                            
+                        }
+
+                        td {
+                            padding: 10px;
+                            text-align: center;
+                            vertical-align: middle;
+                        }
+
+                        td:first-child {
+                            text-align: right;
+                            
+                            font-weight: bold;
+                        }
+
+                        td:last-child {
+                            text-align: left;
+                        }
+
+
+
+                
+                        
+                    </style>
+                    <script>
+                        function validate() {
+                            var pipeline = document.test.pipeline;
+                            var projectid = document.test.projectid;
+                            var bucket = document.test.bucket;
+                            var storage = document.test.storage;
+                            var minutes= document.test.minutes;
+                            var cred = document.test.cred;
+
+                            if (pipeline.value.length <= 0) {
+                                alert("Pipeline is required");
+                                pipeline.focus();
+                                return false;
+                            }
+                            if (projectid.value.length <= 0) {
+                                alert("project id is required");
+                                projectid.focus();
+                                return false;
+                            }
+                            if (bucket.value.length <= 0) {
+                                alert("GCS Bucket is required");
+                                bucket.focus();
+                                return false;
+                            }
+                            
+                            if (storage.value.length <= 0) {
+                                alert("files are required");
+                                storage.focus();
+                                return false;
+                            }
+                            if (cred.value.length <= 0) {
+                                alert("Credentials are required");
+                                cred.focus();
+                                return false;
+                            }
+                            if (minutes.value.length <= 0) {
+                                alert("enter in minutes");
+                                minutes.focus();
+                                return false;
+                            }
+                            
+                            return false;
+                        }    
+                    </script>
+                </head>
+
+            <body>
+                <center>
+                    <h1>Test for Frontend Web Developer Intern
+            </h1>
+            <h2>Test #1</h2>
+            <h7>Develop the following Form using HTML, CSS and Javascript. Add Form validation checks.
+            </h7>
+                </center>
+                <hr>
+                <form method="" action="" name="test" onsubmit="return validate()">
+                
+                    <table>
+                        <tr>
+                            <td><label>SELECT YOUR SOURCE: </label></td>
+                            <td>
+                                <select name="sourse">
+                                    <option value="select storage">select storage</option>
+                                    <option value="gcs">Google Cloud Storage</option>
+                                    <option value="aws">Aws</option>
+
+                                    <option value="ls">localstorage</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Provide a name for pipe line:</label></td>
+                            <td>
+                                <input type="text" name="pipeline" placeholder="e.g.,cust_shop_energy_gkateway001">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>GCS project name: </label></td>
+                            <td>
+                                <input type="text" name="projectid" placeholder="project-id">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>GCS bucket name: </label></td>
+                            <td>
+                                <input type="textarea" size="50" name="bucket" placeholder="gs://your-bucket">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Input Cloud Storage File(s): </label></td>
+                            <td>
+                                <input type="text" name="storage" placeholder="GCS location of your files">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>GCS credentials: </label></td>
+                            <td>
+                                <input type="text" name="cred" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Run Every: </label></td>
+                            <td>
+                                <input type="text" placeholder="(in minutes)" >
+                            </td>
+                        </tr>
+                        
+                        
+                        <tr class="buttons">
+                        
+                            <td class="action_btn">
+                        
+                                <button name="submit"  class="action_btn submit" type="submit" value="Create" onclick="validate()">Create</button>
+                                <button name="submit"  class="action_btn cancel" type="submit" value="Cancel"
+                                    onclick="validate()">Cancel</button>
+                        
+                                <p id="saved"></p>
+                        
+                            </td>
+                        
+                        </tr>
+
+                    </table>
+                </form>
+            </body>
+
+</html>
